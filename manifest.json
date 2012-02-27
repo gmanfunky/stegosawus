@@ -1,0 +1,25 @@
+{
+  "name": "Stegosawus",
+  "version": "1.0",
+  "description": "a.",
+  "homepage_url": "http://gsource.org/",
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "background_page": "background.html",
+  "content_scripts": [
+  {
+    "js": [
+      "find_image_urls.js"
+    ],
+    "matches": [
+      "http://*/*"
+    ],
+    "all_frames": false
+  }
+  ],
+  "permissions": [
+     "http://*/"  //sorry about the permissions. Need to re-request images from any domain. Excluded https for a little assurance it doesn't hax0r bank creds.
+   ]
+   
+}

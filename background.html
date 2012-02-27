@@ -1,0 +1,35 @@
+<script type="text/javascript" src="binaryajax.js"></script>
+
+<script>
+var url = "http://a.fsdn.com/sd/topics/censorship_64.png";
+
+var files = []; //Hold info about incoming files requested. 
+
+function binloaded(http) {
+	var tags = [];
+
+	tags["mimeType"] = http.getResponseHeader("Content-Type");
+	tags["byteSize"] = http.fileSize;
+	tags["data"] = http.binaryResponse.getRawData();
+    
+    //alert("This is the file data" + tags["data"]); //what	 if evil binary data?
+	console.log("This is the file data" + tags["data"]); //what	 if evil binary data?
+	
+	
+	files[url] = tags;
+} 
+
+BinaryAjax(url, binloaded)
+</script>
+
+<script>
+alert ("dev extension loaded");
+
+chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+//  if (request.length > 1)
+//    alert(41);
+  alert(42);
+  sendResponse();
+});
+
+</script>
